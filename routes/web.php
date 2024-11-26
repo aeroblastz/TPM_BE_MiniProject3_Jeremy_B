@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\PersonController;
 use Illuminate\Support\Facades\Route;
 
 // bad practice -> reason -> function in route (x)
@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [PageController::class, 'welcome']);
-
-Route::get('/create', [PageController::class, 'createForm']);
+Route::get('/', [PersonController::class, 'welcome'])->name('welcome');
+Route::post('/store', [PersonController::class, 'store'])->name('store');
+Route::get('/create', [PersonController::class, 'createPerson'])->name('createPerson');
 
 // url -> /view -> page view -> tampilin product
