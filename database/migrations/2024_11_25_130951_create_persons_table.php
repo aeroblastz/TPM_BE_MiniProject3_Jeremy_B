@@ -15,6 +15,7 @@ return new class extends Migration
             $table->integer('age');
             $table->string('job');
             $table->foreignId('gender_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->string('image');
             $table->timestamps();
         });
     }

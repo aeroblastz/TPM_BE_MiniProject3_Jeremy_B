@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create Person</title>
+    <title>Edit Person</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
@@ -31,24 +31,25 @@
     <div class="container py-5">
         <div class="card shadow">
             <div class="card-header bg-primary text-white text-center">
-                <h1>Create Person</h1>
+                <h1>Edit Person</h1>
             </div>
             <div class="card-body">
-                <form action="{{route('store')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('updatePerson',$person->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @method('PATCH')
                     <div class="mb-3">
                         <label for="" class="form-label fw-bold">Name</label>
-                        <input value="" type="text" class="form-control" id="" name="name" placeholder="Example : Budi"required minlength="1">
+                        <input value='{{$person->name}}' type="text" class="form-control" id="" name="name" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="form-label fw-bold">Age</label>
-                        <input value="" type="text" class="form-control" id="" name="age" placeholder="Example : 20" required>
+                        <input value="{{$person->age}}" type="text" class="form-control" id="" name="age" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="" class="form-label fw-bold">Job</label>
-                        <input value="" type="text" class="form-control" id="" name="job" placeholder="Example : Engineer" required>
+                        <input value="{{$person->job}}" type="text" class="form-control" id="" name="job" required>
                     </div>
 
                     <div class="mb-3">
@@ -56,12 +57,14 @@
                         <input  type="file" class="form-control" id="" name="image">
                     </div>
 
-                    <div class="mb-3">
+                     <div class="mb-3">
                         <label for="" class="form-label fw-bold">Gender</label>
                         <select class="form-select" aria-label="Default" name="gender_id" required>
-                            <option value="" disabled selected>Select a gender</option>
+                            <option value="">Select a gender</option>
                             @foreach ($genders as $gender)
-                                <option value="{{ $gender->id }}">{{ $gender->gender }} </option>
+                            <option value="{{ $gender->id }}"
+                                {{ $person->gender_id == $gender->id ? 'selected' : '' }}>
+                                {{ $gender->gender }}
                             @endforeach
                         </select>
                     </div>

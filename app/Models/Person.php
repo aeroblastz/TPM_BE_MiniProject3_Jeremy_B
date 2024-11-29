@@ -10,7 +10,7 @@ class Person extends Model
     protected $table = 'persons';
 
     protected $fillable = [
-        'name', 'age','job','gender_id'
+        'name', 'age','job','gender_id','image'
     ];
 
     public function gender(){

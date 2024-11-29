@@ -42,10 +42,17 @@
             <div class="col-lg-4 col-md-6">
                 <div class="card shadow">
                     <div class="card-body">
+                        <img src="{{asset('/storage/images/'.$person->image)}}" class="card-img-top" alt="...">
                         <h5 class="card-title fw-bold">Name: {{$person->name}}</h5>
                         <p class="card-text"><span class="fw-bold">Age:</span> {{$person->age}}</p>
                         <p class="card-text"><span class="fw-bold">Job:</span> {{$person->job}}</p>
                         <p class="card-text"><span class="fw-bold">Gender:</span> {{$person->gender->gender}}</p>
+                        <a href="{{ route('editPerson', $person->id) }}" class="btn btn-success">Edit</a>
+                        <form action="{{ route('deletePerson', $person->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Delete this person?');">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>
