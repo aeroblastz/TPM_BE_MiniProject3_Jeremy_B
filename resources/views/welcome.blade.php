@@ -24,6 +24,9 @@
                         <a class="nav-link fw-semibold" href="{{ route('createPerson') }}">Create</a>
                     </li>
                 </ul>
+                <div class="d-flex">
+                    <a href="{{ route('logout') }}" class="btn btn-outline-danger">Logout</a>
+                </div>
             </div>
         </div>
     </nav>
